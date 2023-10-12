@@ -1,0 +1,27 @@
+name: Update Blog
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Build Blog
+        run: |
+          # Add commands to build your blog here, e.g., Hugo, Jekyll, or any static site generator.
+          # For example, you can use Hugo:
+          # hugo --destination ./public
+        # Ensure your generated content is in the 'public' folder.
+
+      - name: Deploy Blog
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public # Replace with the output directory of your blog
